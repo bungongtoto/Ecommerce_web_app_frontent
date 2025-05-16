@@ -1,0 +1,20 @@
+import { CiSearch } from "react-icons/ci";
+import "./SearchBar.css";
+
+function SearchBar() {
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+      id="search-bar"
+    >
+      <input type="text" placeholder="Search words..." />
+      <button type="submit">
+        <CiSearch className="icon" />
+      </button>
+    </form>
+  );
+}
+
+export default SearchBar;
