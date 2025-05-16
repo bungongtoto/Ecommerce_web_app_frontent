@@ -4,10 +4,10 @@ header {
   top: 0;
   background-color: var(--primary-color);
   width: 100%;
-  height: 13vh;
+  height: 17vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 #header-top {
@@ -21,7 +21,7 @@ header {
 #header-top nav {
   width: 70%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -38,6 +38,7 @@ header {
 
 .header-nav-tile:hover {
   color: var(--third-color);
+  cursor: pointer;
 }
 
 header h1 {

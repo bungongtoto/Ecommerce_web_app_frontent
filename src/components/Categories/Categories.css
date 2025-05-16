@@ -1,0 +1,91 @@
+#categories-header {
+  padding: 0 10px;
+  background-color: var(--third-color);
+  height: 4vh;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#categories-header ul {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#categories-header ul li {
+  list-style: none;
+}
+
+#categories-header ul li:hover {
+  cursor: pointer;
+  color: var(--secondary-color);
+}
+
+#more-tile {
+  display: flex;
+  align-items: center;
+}
+
+#more-tile:hover {
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+#more-tile p {
+  font-size: 1.3rem;
+}
+
+#more-menu {
+  position: absolute;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 25px;
+  top: 13vh;
+  right: 0;
+  transition: transform 0.3s ease-in-out;
+  height: 87vh;
+  width: 20%;
+  background-color: var(--third-color);
+  color: white;
+}
+
+.more-menu-header {
+  width: 100%;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.more-menu-header .icon:hover {
+  cursor: pointer;
+}
+#more-menu ul {
+  height: 90%;
+  overflow-y: scroll;
+}
+
+#more-menu ul li {
+  list-style: none;
+  text-align: center;
+  font-size: 1.3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.473);
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#more-menu ul li:hover {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.more-menu-open {
+  transform: translateX(0%);
+}
+
+.more-menu-close {
+  transform: translateX(100%);
+}
