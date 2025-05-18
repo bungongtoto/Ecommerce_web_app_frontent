@@ -5,19 +5,24 @@ import { useState } from "react";
 import { PiShoppingCartThin, PiTruckThin } from "react-icons/pi";
 import { CiUser, CiViewList } from "react-icons/ci";
 import CategoriesHeader from "../Categories/CategoriesHeader";
+import { useNavigate } from "react-router";
 
 function Header() {
+  const navigate = useNavigate();
   const [islogin, setIslogin] = useState(false);
   const handleLoggedIn = () => setIslogin();
   return (
     <header>
       <div id="header-top">
-        <h1>Ecommerce</h1>
+        <h1 onClick={() => navigate("/")}>Ecommerce</h1>
         <nav>
           {!islogin && (
             <>
               <div></div>
-              <div className="header-nav-tile">
+              <div
+                onClick={() => navigate("/auth")}
+                className="header-nav-tile"
+              >
                 <FiLogIn className="icon" />
                 <p>Login</p>
               </div>

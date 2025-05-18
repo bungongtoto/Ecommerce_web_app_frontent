@@ -10,8 +10,16 @@
 
 main {
   position: relative;
-  top: 14vh;
+  top: 17vh;
+  height: 78vh;
   padding: 1% 5%;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+main::-webkit-scrollbar {
+  display: none;
 }
 
 body {

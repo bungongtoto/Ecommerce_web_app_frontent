@@ -18,6 +18,10 @@ header {
   align-items: center;
 }
 
+#header-top h1 {
+  cursor: pointer;
+}
+
 #header-top nav {
   width: 70%;
   display: flex;

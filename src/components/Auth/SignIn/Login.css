@@ -1,0 +1,42 @@
+#login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login form {
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  width: 30%;
+  height: 70%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#login form input {
+  font-size: 1.2rem;
+  padding: 5px;
+}
+
+#login form button {
+  cursor: pointer;
+  font-size: 1.3rem;
+  width: 40%;
+  height: 50px;
+  margin: 0 auto;
+  margin-top: 30px;
+  background-color: var(--third-color);
+  color: white;
+}
+
+#login form button:hover {
+  background-color: var(--primary-color);
+}
+
+#login form .icon {
+  cursor: pointer;
+  margin: 0 auto;
+  font-size: 2rem;
+}
