@@ -3,6 +3,7 @@ import "./App.css";
 import AppLayOut from "./AppLayOut/AppLayOut";
 import Products from "./Products/Products";
 import Login from "./Auth/SignIn/Login";
+import SignUp from "./Auth/SignUp/SignUp";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route index element={<Products />} />
           <Route path="/auth">
             <Route index element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
           </Route>
         </Route>
       </Routes>

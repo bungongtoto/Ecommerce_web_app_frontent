@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import "../Login.css";
 import { FcGoogle } from "react-icons/fc";
 
-function Login() {
+function SignUp() {
   return (
     <main id="login">
       <form>
@@ -12,13 +12,12 @@ function Login() {
         <label htmlFor="password">Password:</label>
         <input id="password" type="password" />
 
-        <button>Login</button>
-        <p>
-          Don't have an Account ? <Link to={"/auth/signup"}>Sign Up</Link>
-        </p>
+        <label htmlFor="confirm-password">Confirm Password:</label>
+        <input id="confirm-password" type="password" />
 
+        <button>SignUp</button>
         <p>
-          forgot your password ? <Link to={"#"}>change</Link>
+          Already have an Account ? <Link to={"/auth"}>Sign In</Link>
         </p>
 
         <p>OR sign up with:</p>
@@ -29,4 +28,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;
