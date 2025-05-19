@@ -1,0 +1,21 @@
+#rating-tile {
+  margin-bottom: 10px;
+}
+
+#rating-tile p {
+  margin-bottom: 7px;
+}
+
+#rating-tile .stars .star {
+  margin: 3px;
+}
+
+#rating-tile .stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#rating-tile .stars .full {
+  background-color: var(--secondary-color);
+}

@@ -1,7 +1,29 @@
+import Product from "./Product/Product";
+import "./Products.css";
+
 function Products() {
   return (
     <main id="products">
-      <h1>Products</h1>
+      <h1>Popular Products</h1>
+      <div className="products-list">
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+      </div>
     </main>
   );
 }
