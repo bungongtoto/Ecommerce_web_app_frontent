@@ -22,11 +22,11 @@ function ProductRatingTile() {
   const ratings = generateRating(rating);
   return (
     <div id="rating-tile">
-      <p>rarting ({rating})</p>
-      <div className="stars">
-        {ratings}
-        <span>(87)</span>
-      </div>
+      <p>
+        {" "}
+        <span>(87)</span> rarting ({rating})
+      </p>
+      <div className="stars">{ratings}</div>
     </div>
   );
 }

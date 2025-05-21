@@ -6,3 +6,33 @@
   grid-auto-rows: minmax(600px, 1fr);
   gap: 10px;
 }
+
+/*styles for product detail page*/
+#product-detail {
+  display: flex;
+  justify-content: space-between;
+}
+
+#product-detail .left {
+  width: 70%;
+}
+
+#product-detail .rigth {
+  box-sizing: border-box;
+  padding: 30px;
+  width: 25%;
+  border-radius: 10px;
+  border: 1px solid var(--third-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.out-stock {
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--third-color);
+}

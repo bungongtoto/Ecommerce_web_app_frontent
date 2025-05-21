@@ -4,6 +4,7 @@ import AppLayOut from "./AppLayOut/AppLayOut";
 import Products from "./Products/Products";
 import Login from "./Auth/SignIn/Login";
 import SignUp from "./Auth/SignUp/SignUp";
+import ProductDetail from "./Products/ProductDetail";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route index element={<Login />} />
             <Route path="signup" element={<SignUp />} />
           </Route>
+          <Route path="product/:id" element={<ProductDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

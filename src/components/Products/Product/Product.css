@@ -17,16 +17,57 @@
   height: 30%;
 }
 
-.product-tile-bottom button {
-  font-size: 1.4rem;
-  padding: 8px;
-  color: white;
-  border-radius: 5px;
-  border-color: transparent;
-  background-color: var(--third-color);
+#product-image-tile {
+  box-sizing: border-box;
+  width: 100%;
+  height: 75%;
+  padding: 20px;
+}
+
+#product-image-tile .top {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#product-image-tile .top .icon {
+  font-size: 4rem;
   cursor: pointer;
 }
 
-.product-tile-bottom button:hover {
-  background-color: var(--primary-color);
+#product-image-tile .top .icon:hover {
+  color: var(--third-color);
+}
+
+.image-container {
+  height: 80%;
+  width: 70%;
+  text-align: center;
+}
+
+#product-image-tile .top .image-container img {
+  height: 100%;
+  width: auto;
+}
+
+#product-image-tile .bottom {
+  height: 20%;
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#product-image-tile .bottom img {
+  height: 90px;
+  width: 90px;
+}
+
+.active {
+  min-height: 150px;
+  min-width: 150px;
+  filter: blur(0px);
 }

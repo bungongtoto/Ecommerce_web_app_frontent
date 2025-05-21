@@ -2,6 +2,7 @@
   --primary-color: rgb(96, 96, 235);
   --secondary-color: rgb(248, 222, 72);
   --third-color: rgb(118, 200, 221);
+  --fourth-color: rgb(243, 228, 143);
 }
 
 #root {
@@ -57,4 +58,29 @@ code {
 
 .scroll-container::-webkit-scrollbar-track {
   background: transparent; /* scrollbar background */
+}
+
+.cart-btn,
+.wish-list-btn {
+  font-size: 1.4rem;
+  padding: 8px;
+  color: white;
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: var(--third-color);
+  cursor: pointer;
+}
+
+.cart-btn:hover {
+  background-color: var(--primary-color);
+}
+
+.wish-list-btn {
+  background-color: white;
+  color: inherit;
+  border: 1px solid var(--third-color);
+}
+
+.wish-list-btn:hover {
+  background-color: var(--secondary-color);
 }
