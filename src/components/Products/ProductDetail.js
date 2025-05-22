@@ -9,6 +9,7 @@ function ProductDetail() {
     description:
       "Elevate your workspace with the SmartGlow™ LED Desk Lamp — the perfect blend of modern design and smart functionality. Featuring adjustable brightness levels, color temperature control, and a flexible neck, this lamp provides optimal lighting for reading, working, or relaxing. Its touch-sensitive controls and USB charging port make it a sleek, convenient addition to any home or office.",
     price: 66.99,
+    inStock: true,
   };
   return (
     <main id="product-detail">
@@ -27,7 +28,7 @@ function ProductDetail() {
           <span>Next Free</span> Delivery is available friday from 10am
         </p>
 
-        <h3>Instock</h3>
+        <h3 className={product.inStock ? "in-stock" : "out-stock"}>Instock</h3>
         <div>
           {" "}
           <label>Quantity: </label>

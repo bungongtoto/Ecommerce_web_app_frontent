@@ -28,7 +28,16 @@
   justify-content: space-around;
 }
 
+#product-detail .rigth h3 {
+  font-size: 1.4rem;
+}
+
+.in-stock {
+  color: green;
+}
+
 .out-stock {
+  color: red;
 }
 
 .price {

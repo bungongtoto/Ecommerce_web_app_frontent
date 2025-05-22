@@ -3,6 +3,7 @@ import "./Product.css";
 import image1 from "../../../resources/images/sample-product.jpg";
 import image2 from "../../../resources/images/sample-2.jpeg";
 import image3 from "../../../resources/images/sample-3.jpg";
+import image4 from "../../../resources/images/sample-4.webp";
 import { useState } from "react";
 import {
   FaRegArrowAltCircleLeft,
@@ -10,8 +11,8 @@ import {
 } from "react-icons/fa";
 
 function ProductImageTile() {
-  const imageList = [image1, image2, image3];
-  const [imgIndex, setImgIndex] = useState(2);
+  const imageList = [image1, image2, image3, image4];
+  const [imgIndex, setImgIndex] = useState(0);
   const handleLeftChick = () => {
     const newIndex = imgIndex - 1;
     if (newIndex >= 0 && newIndex < imageList.length) {

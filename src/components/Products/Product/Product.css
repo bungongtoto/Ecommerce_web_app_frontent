@@ -5,6 +5,10 @@
   border: 1px solid var(--primary-color);
   text-align: center;
 }
+#product .price {
+  position: absolute;
+  padding: 5px;
+}
 
 #product img {
   width: 100%;

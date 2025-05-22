@@ -1,0 +1,23 @@
+#quantity-form {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#quantity-form input {
+  width: 50px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+#quantity-form .qty-btn {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+#quantity-form .qty-btn:hover {
+  color: var(--secondary-color);
+}

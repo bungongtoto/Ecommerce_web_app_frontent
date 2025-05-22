@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 
 function Header() {
   const navigate = useNavigate();
-  const [islogin, setIslogin] = useState(false);
+  const [islogin, setIslogin] = useState(true);
   const handleLoggedIn = () => setIslogin();
   return (
     <header>
@@ -41,7 +41,10 @@ function Header() {
                 <p>Wish List</p>
               </div>
 
-              <div className="header-nav-tile">
+              <div
+                onClick={() => navigate("/cart")}
+                className="header-nav-tile"
+              >
                 <PiShoppingCartThin className="icon" /> <span>(2)</span>
                 <p>Cart</p>
               </div>

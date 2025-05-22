@@ -9,6 +9,7 @@ function Product() {
     "NINJA Air Frier Pro Max17 MEGA MEGA LOYANGYE belle foot kngong jsak jkkak skk dksl";
   return (
     <div id="product">
+      <p className="price">£78.99</p>
       <img
         onClick={() => navigate("/product/1")}
         src={sample_image}
@@ -19,7 +20,7 @@ function Product() {
           {title.length > 50 ? title.slice(0, 50) + "..." : title}
         </h5>
         <ProductRatingTile />
-        <button className="cart-button" onClick={() => alert("clicked")}>
+        <button className="cart-btn" onClick={() => alert("clicked")}>
           Add To Cart
         </button>
       </div>
