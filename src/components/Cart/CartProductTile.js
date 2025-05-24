@@ -1,4 +1,3 @@
-import "./Cart.css";
 import sampleImage from "../../resources/images/sample-product.jpg";
 import QuantityTile from "../general/QuantityTile";
 import { MdDelete } from "react-icons/md";

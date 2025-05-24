@@ -1,6 +1,6 @@
-import ProductImageTile from "./Product/ProductImageTile";
 import "./Products.css";
-import ProductRatingTile from "./Rating/ProductRatingTile";
+import ProductImageTile from "../../components/Product/ProductImageTile";
+import ProductRatingTile from "../../components/Rating/ProductRatingTile";
 
 function ProductDetail() {
   const product = {
@@ -23,11 +23,9 @@ function ProductDetail() {
       </div>
       <form onSubmit={(e) => e.preventDefault()} className="rigth">
         <p className="price">£{product.price}</p>
-
         <p>
           <span>Next Free</span> Delivery is available friday from 10am
         </p>
-
         <h3 className={product.inStock ? "in-stock" : "out-stock"}>Instock</h3>
         <div>
           {" "}
@@ -40,11 +38,10 @@ function ProductDetail() {
             max={100}
           ></input>
         </div>
-
         <button className="cart-btn" type="submit">
           Add to Basket
         </button>
-
+        ./
         <table>
           <tr>
             <td>Dispatches from</td>
@@ -55,7 +52,6 @@ function ProductDetail() {
             <td>Evri</td>
           </tr>
         </table>
-
         <button className="wish-list-btn">Add To Wish List</button>
       </form>
     </main>

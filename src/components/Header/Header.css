@@ -8,13 +8,14 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 #header-top {
-  width: 100%;
+  width: 90%;
   height: 6vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -23,7 +24,7 @@ header {
 }
 
 #header-top nav {
-  width: 70%;
+  width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,9 +1,9 @@
 import "./Product.css";
 
-import image1 from "../../../resources/images/sample-product.jpg";
-import image2 from "../../../resources/images/sample-2.jpeg";
-import image3 from "../../../resources/images/sample-3.jpg";
-import image4 from "../../../resources/images/sample-4.webp";
+import image1 from "../../resources/images/sample-product.jpg";
+import image2 from "../../resources/images/sample-2.jpeg";
+import image3 from "../../resources/images/sample-3.jpg";
+import image4 from "../../resources/images/sample-4.webp";
 import { useState } from "react";
 import {
   FaRegArrowAltCircleLeft,

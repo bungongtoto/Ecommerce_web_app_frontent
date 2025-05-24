@@ -1,5 +1,5 @@
 import "./Product.css";
-import sample_image from "../../../resources/images/sample-product.jpg";
+import sample_image from "../../resources/images/sample-product.jpg";
 import ProductRatingTile from "../Rating/ProductRatingTile";
 import { useNavigate } from "react-router";
 

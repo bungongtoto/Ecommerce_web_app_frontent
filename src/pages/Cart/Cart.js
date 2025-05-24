@@ -1,5 +1,5 @@
 import "./Cart.css";
-import CartProductTile from "./CartProductTile";
+import CartProductTile from "../../components/Cart/CartProductTile";
 
 function Cart() {
   return (

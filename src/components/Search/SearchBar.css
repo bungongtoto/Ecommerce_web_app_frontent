@@ -1,6 +1,5 @@
 #search-bar {
-  margin: 0 auto;
-  width: 50%;
+  width: 50vw;
   border-radius: 5px;
   height: 4vh;
   background-color: white;

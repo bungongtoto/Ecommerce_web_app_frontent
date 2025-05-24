@@ -31,14 +31,12 @@ function Header() {
 
           {islogin && (
             <>
-              <div className="header-nav-tile">
+              <div
+                onClick={() => navigate("/orders")}
+                className="header-nav-tile"
+              >
                 <PiTruckThin className="icon" />
                 <p>Orders</p>
-              </div>
-
-              <div className="header-nav-tile">
-                <CiViewList className="icon" /> <span>(1)</span>
-                <p>Wish List</p>
               </div>
 
               <div
