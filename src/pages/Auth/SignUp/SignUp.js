@@ -6,6 +6,7 @@ import AuthInfo from "../../../components/information/AuthInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../../store/auth/Auth.actions";
 import { enqueueSnackbar } from "notistack";
+import { PulseLoader } from "react-spinners";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -68,8 +69,12 @@ function SignUp() {
         )}
 
         {error && <AuthInfo isError={true} messages={error} />}
+        {isFetching ? (
+          <PulseLoader className="loader" color="#F34325" />
+        ) : (
+          <button type="submit">SignUp</button>
+        )}
 
-        <button type="submit">SignUp</button>
         <p>
           Already have an Account ? <Link to={"/auth"}>Sign In</Link>
         </p>

@@ -6,17 +6,17 @@ import { PiShoppingCartThin, PiTruckThin } from "react-icons/pi";
 import { CiUser } from "react-icons/ci";
 import CategoriesHeader from "../Categories/CategoriesHeader";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 function Header() {
   const navigate = useNavigate();
-  const [islogin, setIslogin] = useState(false);
-  const handleLoggedIn = () => setIslogin();
+  const { isAunthenticated } = useSelector((state) => state.auth);
   return (
     <header>
       <div id="header-top">
         <h1 onClick={() => navigate("/")}>Ecommerce</h1>
         <nav>
-          {!islogin && (
+          {!isAunthenticated && (
             <>
               <div></div>
               <div
@@ -29,7 +29,7 @@ function Header() {
             </>
           )}
 
-          {islogin && (
+          {isAunthenticated && (
             <>
               <div
                 onClick={() => navigate("/orders")}

@@ -8,3 +8,12 @@ export const register = async (credentials) => {
     throw error.response.data;
   }
 };
+
+export const login = async (credentials) => {
+  try {
+    const response = await API.post("/auth/login", credentials);
+    return response;
+  } catch (error) {
+    throw error.response.data;
+  }
+};

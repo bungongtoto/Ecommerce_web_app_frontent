@@ -1,19 +1,62 @@
 import { Link, useNavigate } from "react-router";
 import "../Login.css";
 import { FcGoogle } from "react-icons/fc";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../../store/auth/Auth.actions";
+import AuthInfo from "../../../components/information/AuthInfo";
+import { enqueueSnackbar } from "notistack";
+import { PulseLoader } from "react-spinners";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isFetching, error, isAunthenticated } = useSelector(
+    (state) => state.auth
+  );
+  const [email, setemail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    dispatch(loginUser({ username: email, password }));
+  };
+
+  useEffect(() => {
+    if (isAunthenticated && !isFetching) {
+      enqueueSnackbar("logged In successfully.", { variant: "success" });
+      navigate("/");
+    }
+  }, [isAunthenticated, isFetching, navigate]);
+
   return (
     <main id="login">
-      <form>
+      <form onSubmit={handleLogin}>
         <label htmlFor="email">Email:</label>
-        <input id="email" type="email" placeholder="example@domain.com" />
+        <input
+          id="email"
+          type="email"
+          placeholder="example@domain.com"
+          value={email}
+          onChange={(e) => setemail(e.target.value)}
+          required
+        />
 
         <label htmlFor="password">Password:</label>
-        <input id="password" type="password" />
+        <input
+          id="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-        <button>Login</button>
+        {error && <AuthInfo isError={true} messages={error} />}
+
+        {isFetching ? (
+          <PulseLoader className="loader" color="#F34325" />
+        ) : (
+          <button type="submit">Login</button>
+        )}
         <p>
           Don't have an Account ? <Link to={"/auth/signup"}>Sign Up</Link>
         </p>

@@ -43,6 +43,12 @@ code {
   margin-right: 10px;
 }
 
+.loader {
+  margin: 0 auto;
+  height: 50px;
+  width: 50px;
+}
+
 .scroll-container::-webkit-scrollbar {
   width: 4px; /* scrollbar width */
 }
