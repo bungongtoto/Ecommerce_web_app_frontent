@@ -1,8 +1,9 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import "../Login.css";
 import { FcGoogle } from "react-icons/fc";
 
 function Login() {
+  const navigate = useNavigate();
   return (
     <main id="login">
       <form>

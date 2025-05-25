@@ -3,13 +3,13 @@ import SearchBar from "../Search/SearchBar";
 import { FiLogIn } from "react-icons/fi";
 import { useState } from "react";
 import { PiShoppingCartThin, PiTruckThin } from "react-icons/pi";
-import { CiUser, CiViewList } from "react-icons/ci";
+import { CiUser } from "react-icons/ci";
 import CategoriesHeader from "../Categories/CategoriesHeader";
 import { useNavigate } from "react-router";
 
 function Header() {
   const navigate = useNavigate();
-  const [islogin, setIslogin] = useState(true);
+  const [islogin, setIslogin] = useState(false);
   const handleLoggedIn = () => setIslogin();
   return (
     <header>
