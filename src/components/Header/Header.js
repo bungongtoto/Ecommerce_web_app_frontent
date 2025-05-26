@@ -1,7 +1,6 @@
 import "./Header.css";
 import SearchBar from "../Search/SearchBar";
 import { FiLogIn } from "react-icons/fi";
-import { useState } from "react";
 import { PiShoppingCartThin, PiTruckThin } from "react-icons/pi";
 import { CiUser } from "react-icons/ci";
 import CategoriesHeader from "../Categories/CategoriesHeader";
@@ -10,13 +9,15 @@ import { useSelector } from "react-redux";
 
 function Header() {
   const navigate = useNavigate();
-  const { isAunthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  console.log(isAuthenticated);
+
   return (
     <header>
       <div id="header-top">
         <h1 onClick={() => navigate("/")}>Ecommerce</h1>
         <nav>
-          {!isAunthenticated && (
+          {!isAuthenticated && (
             <>
               <div></div>
               <div
@@ -29,7 +30,7 @@ function Header() {
             </>
           )}
 
-          {isAunthenticated && (
+          {isAuthenticated && (
             <>
               <div
                 onClick={() => navigate("/orders")}

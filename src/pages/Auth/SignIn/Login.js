@@ -11,7 +11,7 @@ import { PulseLoader } from "react-spinners";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isFetching, error, isAunthenticated } = useSelector(
+  const { isFetching, error, isAuthenticated } = useSelector(
     (state) => state.auth
   );
   const [email, setemail] = useState("");
@@ -22,11 +22,11 @@ function Login() {
   };
 
   useEffect(() => {
-    if (isAunthenticated && !isFetching) {
+    if (isAuthenticated && !isFetching) {
       enqueueSnackbar("logged In successfully.", { variant: "success" });
       navigate("/");
     }
-  }, [isAunthenticated, isFetching, navigate]);
+  }, [isAuthenticated, isFetching, navigate]);
 
   return (
     <main id="login">
