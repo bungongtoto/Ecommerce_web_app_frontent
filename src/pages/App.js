@@ -8,6 +8,8 @@ import ProductDetail from "./Products/ProductDetail";
 import Cart from "./Cart/Cart";
 import Orders from "./Orders/Orders";
 import { SnackbarProvider } from "notistack";
+import Account from "./Account/Account";
+import RequireAuth from "./Auth/RequireAuth";
 
 function App() {
   return (
@@ -16,13 +18,18 @@ function App() {
         <Routes>
           <Route path="/" element={<AppLayOut />}>
             <Route index element={<Products />} />
+            <Route path="product/:id" element={<ProductDetail />} />
+
             <Route path="/auth">
               <Route index element={<Login />} />
               <Route path="signup" element={<SignUp />} />
             </Route>
-            <Route path="product/:id" element={<ProductDetail />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="orders" element={<Orders />} />
+
+            <Route element={<RequireAuth />}>
+              <Route path="account" element={<Account />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path="orders" element={<Orders />} />
+            </Route>
           </Route>
         </Routes>
       </SnackbarProvider>
