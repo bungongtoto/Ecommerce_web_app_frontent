@@ -11,17 +11,18 @@
 
 main {
   position: relative;
+  box-sizing: border-box;
   top: 17vh;
   height: 78vh;
   padding: 1% 5%;
   overflow: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  /* scrollbar-width: none;
+  -ms-overflow-style: none; */
 }
 
-main::-webkit-scrollbar {
+/* main::-webkit-scrollbar {
   display: none;
-}
+} */
 
 body {
   margin: 0;
@@ -83,10 +84,17 @@ code {
 
 .wish-list-btn {
   background-color: white;
+  text-align: center;
   color: inherit;
   border: 1px solid var(--third-color);
 }
 
 .wish-list-btn:hover {
   background-color: var(--secondary-color);
+}
+
+
+.info-btn{
+  font-size: 1.5rem;
+  text-align: center;
 }

@@ -18,6 +18,15 @@ export const login = async (credentials) => {
   }
 };
 
+export const logout = async () => {
+  try {
+    const response = await API.get("/auth/logout");
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
 export const isLoggedIn = async () => {
   try {
     const response = await API.get("/auth/logged_in");

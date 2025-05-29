@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import "../Login.css";
 import { FcGoogle } from "react-icons/fc";
 import { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import { PulseLoader } from "react-spinners";
 function SignUp() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
   const { error, isFetching, isSuccess } = useSelector((state) => state.auth);
 
   const [email, setEmail] = useState("");
@@ -76,7 +77,10 @@ function SignUp() {
         )}
 
         <p>
-          Already have an Account ? <Link to={"/auth"}>Sign In</Link>
+          Already have an Account ?{" "}
+          <Link to={"/auth"} state={{ from: location }} replace>
+            Sign In
+          </Link>
         </p>
 
         <p>OR sign up with:</p>

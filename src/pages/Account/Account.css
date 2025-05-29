@@ -1,0 +1,22 @@
+#account form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    width: 50%;
+
+}
+
+#account form label {
+    margin-top: 10px;
+}
+
+#account form input {
+    width: 90%;
+    font-size: 1.3rem;
+}
+
+#account form button {
+    width: 25%;
+    margin: 20px auto;
+}

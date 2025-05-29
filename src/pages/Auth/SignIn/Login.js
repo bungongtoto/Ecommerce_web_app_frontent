@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import "../Login.css";
 import { FcGoogle } from "react-icons/fc";
 import { useEffect, useState } from "react";
@@ -10,6 +10,7 @@ import { PulseLoader } from "react-spinners";
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const { isFetching, error, isAuthenticated } = useSelector(
     (state) => state.auth
@@ -23,10 +24,15 @@ function Login() {
 
   useEffect(() => {
     if (isAuthenticated && !isFetching) {
+      const from = location.state?.from?.pathname;
       enqueueSnackbar("logged In successfully.", { variant: "success" });
-      navigate("/");
+      if (from === undefined || from === "/auth/signup" || from === "/") {
+        navigate("/");
+      } else {
+        navigate(from);
+      }
     }
-  }, [isAuthenticated, isFetching, navigate]);
+  }, [isAuthenticated, isFetching, navigate, location.state?.from?.pathname]);
 
   return (
     <main id="login">
@@ -58,7 +64,10 @@ function Login() {
           <button type="submit">Login</button>
         )}
         <p>
-          Don't have an Account ? <Link to={"/auth/signup"}>Sign Up</Link>
+          Don't have an Account ?{" "}
+          <Link to={"/auth/signup"} state={{ from: location }} replace>
+            Sign Up
+          </Link>
         </p>
 
         <p>

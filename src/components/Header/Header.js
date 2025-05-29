@@ -6,11 +6,14 @@ import { CiUser } from "react-icons/ci";
 import CategoriesHeader from "../Categories/CategoriesHeader";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function Header() {
   const navigate = useNavigate();
+
   const { isAuthenticated } = useSelector((state) => state.auth);
-  console.log(isAuthenticated);
+  const { user } = useSelector((state) => state.user);
+  useEffect(() => {}, [isAuthenticated]);
 
   return (
     <header>
@@ -48,9 +51,16 @@ function Header() {
                 <p>Cart</p>
               </div>
 
-              <div className="header-nav-tile">
+              <div
+                onClick={() => navigate("/account")}
+                className="header-nav-tile"
+              >
                 <CiUser className="icon" />
-                <p>bungongkingsley</p>
+                <p>
+                  {user?.first_name
+                    ? user.first_name
+                    : user?.email.slice(0, 10)}
+                </p>
               </div>
             </>
           )}
