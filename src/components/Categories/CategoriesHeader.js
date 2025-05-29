@@ -1,22 +1,27 @@
 import { CiCircleMore } from "react-icons/ci";
 import "./Categories.css";
 import { useState } from "react";
+import { PulseLoader } from "react-spinners";
 import AllCategories from "./AllCategories";
+import { useSelector } from "react-redux";
 
 function CategoriesHeader() {
   const [showMore, setShowMore] = useState(false);
+  const { categories, isCategoriesFetching } = useSelector(
+    (state) => state.categories
+  );
+  const categoriesList = categories
+    ?.slice(0, 5)
+    .map((category) => <li>{category.name}</li>);
   return (
     <>
       <div id="categories-header">
         <h3>Popular Categories</h3>
-        <ul>
-          <li>Electronics</li>
-          <li>Clothing</li>
-          <li>Home & Kitchen</li>
-          <li>Health & Beauty</li>
-          <li>Sports & Outdoors</li>
-          <li>Snickers</li>
-        </ul>
+        {isCategoriesFetching ? (
+          <PulseLoader className="loader" color="#F34325" />
+        ) : (
+          <ul>{categoriesList}</ul>
+        )}
         <div onClick={() => setShowMore(true)} id="more-tile">
           <CiCircleMore className="icon" />
           <p>More</p>

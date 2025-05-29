@@ -1,9 +1,21 @@
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import "./Categories.css";
 import { useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { PulseLoader } from "react-spinners";
+import GeneralInfo from "../information/GeneralInfo";
+import { fetchProductCategories } from "../../store/categories/categories.actions";
 
 function AllCategories({ open, setOpen }) {
   const menuRef = useRef(null);
+  const dispatch = useDispatch();
+  const { categories, isCategoriesFetching, categoriesError } = useSelector(
+    (state) => state.categories
+  );
+
+  const categoriesList = categories?.map((category) => (
+    <li>{category.name}</li>
+  ));
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -28,32 +40,19 @@ function AllCategories({ open, setOpen }) {
           className="icon"
         />
       </div>
-      <ul className="scroll-container">
-        <li>Electronics</li>
-        <li>Clothing</li>
-        <li>Home & Kitchen</li>
-        <li>Health & Beauty</li>
-        <li>Sports & Outdoors</li>
-        <li>Snickers</li>
-        <li>Electronics</li>
-        <li>Clothing</li>
-        <li>Home & Kitchen</li>
-        <li>Health & Beauty</li>
-        <li>Sports & Outdoors</li>
-        <li>Snickers</li>
-        <li>Electronics</li>
-        <li>Clothing</li>
-        <li>Home & Kitchen</li>
-        <li>Health & Beauty</li>
-        <li>Sports & Outdoors</li>
-        <li>Snickers</li>
-        <li>Electronics</li>
-        <li>Clothing</li>
-        <li>Home & Kitchen</li>
-        <li>Health & Beauty</li>
-        <li>Sports & Outdoors</li>
-        <li>Snickers</li>
-      </ul>
+      {isCategoriesFetching ? (
+        <PulseLoader className="loader" color="#F34325" />
+      ) : (
+        categories && <ul className="scroll-container">{categoriesList}</ul>
+      )}
+      {categoriesError && (
+        <GeneralInfo
+          isError={true}
+          messages={categoriesError}
+          btnText="Try Again"
+          handleAction={() => dispatch(fetchProductCategories())}
+        />
+      )}
     </div>
   );
 }
