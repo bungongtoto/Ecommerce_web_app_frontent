@@ -1,8 +1,7 @@
 import { IoStarOutline } from "react-icons/io5";
 import "./Rating.css";
 
-function ProductRatingTile() {
-  const rating = 3.2;
+function ProductRatingTile({ average_rating, rating_count }) {
   const generateRating = (rating) => {
     let fullcount = Math.floor(rating);
     let ratings = [];
@@ -19,12 +18,12 @@ function ProductRatingTile() {
     return ratings;
   };
 
-  const ratings = generateRating(rating);
+  const ratings = generateRating(parseFloat(average_rating));
   return (
     <div id="rating-tile">
       <p>
         {" "}
-        <span>(87)</span> rarting ({rating})
+        <span>({rating_count})</span> rating ({average_rating})
       </p>
       <div className="stars">{ratings}</div>
     </div>

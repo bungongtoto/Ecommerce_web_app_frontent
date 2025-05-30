@@ -1,25 +1,27 @@
 import "./Product.css";
-import sample_image from "../../resources/images/sample-product.jpg";
 import ProductRatingTile from "../Rating/ProductRatingTile";
 import { useNavigate } from "react-router";
 
-function Product() {
+function Product({ product }) {
   const navigate = useNavigate();
-  const title =
-    "NINJA Air Frier Pro Max17 MEGA MEGA LOYANGYE belle foot kngong jsak jkkak skk dksl";
   return (
     <div id="product">
-      <p className="price">£78.99</p>
+      <p className="price">{product?.unit_price}</p>
       <img
-        onClick={() => navigate("/product/1")}
-        src={sample_image}
+        onClick={() => navigate(`/product/${product?.id}`)}
+        src={product?.images[0].image_url}
         alt="sample-product"
       />
       <div className="product-tile-bottom">
-        <h5 onClick={() => navigate("/product/1")}>
-          {title.length > 50 ? title.slice(0, 50) + "..." : title}
-        </h5>
-        <ProductRatingTile />
+        <h3 onClick={() => navigate("/product/1")}>
+          {product?.name.length > 50
+            ? product?.name.slice(0, 50) + "..."
+            : product?.name}
+        </h3>
+        <ProductRatingTile
+          average_rating={product?.average_rating}
+          rating_count={product?.rating_count}
+        />
         <button className="cart-btn" onClick={() => alert("clicked")}>
           Add To Cart
         </button>
