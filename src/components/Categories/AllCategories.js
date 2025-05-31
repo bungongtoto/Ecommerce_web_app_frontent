@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { PulseLoader } from "react-spinners";
 import GeneralInfo from "../information/GeneralInfo";
 import { fetchProductCategories } from "../../store/categories/categories.actions";
+import { useNavigate } from "react-router";
 
 function AllCategories({ open, setOpen }) {
+  const navigate = useNavigate();
   const menuRef = useRef(null);
   const dispatch = useDispatch();
   const { categories, isCategoriesFetching, categoriesError } = useSelector(
@@ -14,7 +16,9 @@ function AllCategories({ open, setOpen }) {
   );
 
   const categoriesList = categories?.map((category, index) => (
-    <li key={index}>{category.name}</li>
+    <li key={index} onClick={() => navigate(`/?category_id=${category.id}`)}>
+      {category.name}
+    </li>
   ));
 
   useEffect(() => {

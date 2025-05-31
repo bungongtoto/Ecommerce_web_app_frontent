@@ -4,15 +4,19 @@ import { useState } from "react";
 import { PulseLoader } from "react-spinners";
 import AllCategories from "./AllCategories";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 function CategoriesHeader() {
+  const navigate = useNavigate();
   const [showMore, setShowMore] = useState(false);
   const { categories, isCategoriesFetching } = useSelector(
     (state) => state.categories
   );
-  const categoriesList = categories
-    ?.slice(0, 5)
-    .map((category, index) => <li key={index}>{category.name}</li>);
+  const categoriesList = categories?.slice(0, 5).map((category, index) => (
+    <li key={index} onClick={() => navigate(`/?category_id=${category.id}`)}>
+      {category.name}
+    </li>
+  ));
   return (
     <>
       <div id="categories-header">
