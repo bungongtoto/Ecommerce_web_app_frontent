@@ -13,8 +13,8 @@ function AllCategories({ open, setOpen }) {
     (state) => state.categories
   );
 
-  const categoriesList = categories?.map((category) => (
-    <li>{category.name}</li>
+  const categoriesList = categories?.map((category, index) => (
+    <li key={index}>{category.name}</li>
   ));
 
   useEffect(() => {

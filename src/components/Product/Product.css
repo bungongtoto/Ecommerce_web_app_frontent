@@ -59,6 +59,7 @@
 #product-image-tile .top .image-container img {
   height: 100%;
   width: auto;
+  object-fit: cover;
 }
 
 #product-image-tile .bottom {

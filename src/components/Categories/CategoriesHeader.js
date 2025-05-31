@@ -12,7 +12,7 @@ function CategoriesHeader() {
   );
   const categoriesList = categories
     ?.slice(0, 5)
-    .map((category) => <li>{category.name}</li>);
+    .map((category, index) => <li key={index}>{category.name}</li>);
   return (
     <>
       <div id="categories-header">

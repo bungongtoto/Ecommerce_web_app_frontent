@@ -1,17 +1,12 @@
 import "./Product.css";
-
-import image1 from "../../resources/images/sample-product.jpg";
-import image2 from "../../resources/images/sample-2.jpeg";
-import image3 from "../../resources/images/sample-3.jpg";
-import image4 from "../../resources/images/sample-4.webp";
 import { useState } from "react";
 import {
   FaRegArrowAltCircleLeft,
   FaRegArrowAltCircleRight,
 } from "react-icons/fa";
+import GeneralInfo from "../information/GeneralInfo";
 
-function ProductImageTile() {
-  const imageList = [image1, image2, image3, image4];
+function ProductImageTile({ imageList, alt }) {
   const [imgIndex, setImgIndex] = useState(0);
   const handleLeftChick = () => {
     const newIndex = imgIndex - 1;
@@ -31,8 +26,8 @@ function ProductImageTile() {
     return (
       <img
         key={index}
-        src={image}
-        alt={"product"}
+        src={image.image_url}
+        alt={alt}
         className={index === imgIndex ? "active" : ""}
       />
     );
@@ -40,14 +35,26 @@ function ProductImageTile() {
 
   return (
     <div id="product-image-tile">
-      <div className="top">
-        <FaRegArrowAltCircleLeft onClick={handleLeftChick} className="icon" />
-        <div className="image-container">
-          <img src={imageList[imgIndex]} alt="first sample" />
-        </div>
-        <FaRegArrowAltCircleRight onClick={handleRightChick} className="icon" />
-      </div>
-      <div className="bottom">{imageListNav}</div>
+      {imageList.length > 0 ? (
+        <>
+          <div className="top">
+            <FaRegArrowAltCircleLeft
+              onClick={handleLeftChick}
+              className="icon"
+            />
+            <div className="image-container">
+              <img src={imageList[imgIndex].image_url} alt={alt} />
+            </div>
+            <FaRegArrowAltCircleRight
+              onClick={handleRightChick}
+              className="icon"
+            />
+          </div>
+          <div className="bottom">{imageListNav}</div>
+        </>
+      ) : (
+        <GeneralInfo messages={"No images for this product."} />
+      )}
     </div>
   );
 }

@@ -8,10 +8,10 @@ function ProductRatingTile({ average_rating, rating_count }) {
 
     for (let i = 0; i < 5; i++) {
       if (fullcount > 0) {
-        ratings.push(<IoStarOutline className="star full" />);
+        ratings.push(<IoStarOutline key={i} className="star full" />);
         fullcount--;
       } else {
-        ratings.push(<IoStarOutline className="star" />);
+        ratings.push(<IoStarOutline key={i} className="star" />);
       }
     }
 

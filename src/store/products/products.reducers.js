@@ -19,7 +19,6 @@ const productsSlice = createSlice({
       })
       .addCase(fetchPopularProducts.fulfilled, (state, action) => {
         const { products } = action.payload;
-        console.log(products);
         state.products = products;
         state.isProductsFetching = false;
         state.errorProducts = null;
