@@ -29,7 +29,7 @@ export const logout = async () => {
 
 export const isLoggedIn = async () => {
   try {
-    const response = await API.get("/auth/logged_in");
+    const response = await API.post("/auth/logged_in");
     return response.data;
   } catch (error) {
     throw error.response.data;

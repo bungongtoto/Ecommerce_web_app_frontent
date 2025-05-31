@@ -42,10 +42,13 @@ function Account() {
     }
   }, [dispatch, user, isAuthenticated]);
 
-  const handleUpdateUser = (details) => {
+  const handleUpdateUser = async (details) => {
     try {
       if (details) {
         dispatch(UpdateUserDetails(details));
+        localStorage.clear();
+        sessionStorage.clear();
+        dispatch({ type: "RESET_STORE" });
         enqueueSnackbar("Updated", { variant: "success" });
       }
     } catch (error) {

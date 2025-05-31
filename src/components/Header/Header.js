@@ -5,14 +5,21 @@ import { PiShoppingCartThin, PiTruckThin } from "react-icons/pi";
 import { CiUser } from "react-icons/ci";
 import CategoriesHeader from "../Categories/CategoriesHeader";
 import { useNavigate } from "react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { checkLoggedInStatus } from "../../store/auth/Auth.actions";
 
 function Header() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   const { user } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(checkLoggedInStatus());
+  }, [isAuthenticated, dispatch]);
 
   return (
     <header>
