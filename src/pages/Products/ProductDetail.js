@@ -1,21 +1,45 @@
 import "./Products.css";
 import ProductImageTile from "../../components/Product/ProductImageTile";
 import ProductRatingTile from "../../components/Rating/ProductRatingTile";
-import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductById } from "../../store/detailProduct/detailProduct.actions";
 import { PulseLoader } from "react-spinners";
 import GeneralInfo from "../../components/information/GeneralInfo";
+import AddToCartForm from "../../components/Cart/AddToCartForm";
+import { addProductTocart } from "../../store/cart/cart.actions";
+import { enqueueSnackbar } from "notistack";
 
 function ProductDetail() {
+  const location = useLocation();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
+
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   const { product, isProductLoading, errorProduct } = useSelector(
     (state) => state.detailProduct
   );
+
+  const { iscartFetching, cartError } = useSelector((state) => state.cart);
+
+  const handleAddToCart = async (e, quantity) => {
+    e.preventDefault();
+    if (isAuthenticated) {
+      await dispatch(addProductTocart({ product_id: product?.id, quantity }));
+      if (!iscartFetching && cartError === null) {
+        navigate("/cart");
+        enqueueSnackbar("Product Added", { variant: "success" });
+      } else {
+        enqueueSnackbar(`An Error: ${cartError}`, { variant: "error" });
+      }
+    } else {
+      alert("Not Authenticated, please Login.");
+      navigate("/auth", { state: { from: location } });
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchProductById(id));
@@ -45,46 +69,11 @@ function ProductDetail() {
           )}
 
           {product && (
-            <form onSubmit={(e) => e.preventDefault()} className="rigth">
-              <p className="price">{product?.unit_price}</p>
-              <p>
-                <span>Next Free</span> Delivery is available friday from 10am
-              </p>
-              <h3 className={product?.quantity > 0 ? "in-stock" : "out-stock"}>
-                Instock
-              </h3>
-              <div>
-                {" "}
-                <label>Quantity: </label>
-                <input
-                  id="quantity"
-                  type="number"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                  min={1}
-                  max={product?.quantity}
-                ></input>
-              </div>
-              <button
-                className="cart-btn"
-                type="submit"
-                disabled={product?.quantity <= 0}
-              >
-                Add to Basket
-              </button>
-
-              <table>
-                <tr>
-                  <td>Dispatches from</td>
-                  <td>Shirebrook England</td>
-                </tr>
-                <tr>
-                  <td>Courier</td>
-                  <td>Evri</td>
-                </tr>
-              </table>
-              <button className="wish-list-btn">Add To Wish List</button>
-            </form>
+            <AddToCartForm
+              product={product}
+              handleSubmit={handleAddToCart}
+              iscartFetching={iscartFetching}
+            />
           )}
         </>
       )}

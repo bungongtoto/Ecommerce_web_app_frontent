@@ -13,7 +13,7 @@ function Product({ product }) {
         alt="sample-product"
       />
       <div className="product-tile-bottom">
-        <h3 onClick={() => navigate("/product/1")}>
+        <h3 onClick={() => navigate(`/product/${product?.id}`)}>
           {product?.name.length > 50
             ? product?.name.slice(0, 50) + "..."
             : product?.name}
@@ -22,8 +22,11 @@ function Product({ product }) {
           average_rating={product?.average_rating}
           rating_count={product?.rating_count}
         />
-        <button className="cart-btn" onClick={() => alert("clicked")}>
-          Add To Cart
+        <button
+          className="cart-btn"
+          onClick={() => navigate(`/product/${product?.id}`)}
+        >
+          Check Out
         </button>
       </div>
     </div>
