@@ -3,10 +3,34 @@ import { CiCircleMinus } from "react-icons/ci";
 import "./General.css";
 import { useState } from "react";
 
-function QuantityTile({ value = 1 }) {
+function QuantityTile({ value = 1, max = Infinity, handleUpdate }) {
   const [quantity, setQuantity] = useState(value);
-  const handleMinus = () => {};
-  const handleAdd = () => {};
+
+  // const updateQuantity = () => {
+  //   handleUpdate(quantity);
+  // };
+
+  const handleMinus = () => {
+    const value = quantity - 1;
+    if (value >= 1) {
+      setQuantity(value);
+      handleUpdate(value, false);
+    }
+  };
+  const handleAdd = () => {
+    const value = quantity + 1;
+    if (value < max) {
+      setQuantity(value);
+      handleUpdate(value);
+    }
+  };
+
+  const handleOnChange = (e) => {
+    const value = parseInt(e.target.value);
+    setQuantity(value);
+    handleUpdate(value);
+  };
+
   return (
     <div>
       <div id="quantity-form">
@@ -15,7 +39,9 @@ function QuantityTile({ value = 1 }) {
           type="number"
           min={1}
           value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
+          onChange={handleOnChange}
+          disabled={true}
+          max={max}
         />
         <IoIosAddCircleOutline className="qty-btn" onClick={handleAdd} />
       </div>

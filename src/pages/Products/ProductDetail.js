@@ -23,17 +23,19 @@ function ProductDetail() {
     (state) => state.detailProduct
   );
 
-  const { iscartFetching, cartError } = useSelector((state) => state.cart);
+  const { isAddProductLoading, addProductError } = useSelector(
+    (state) => state.cart
+  );
 
   const handleAddToCart = async (e, quantity) => {
     e.preventDefault();
     if (isAuthenticated) {
       await dispatch(addProductTocart({ product_id: product?.id, quantity }));
-      if (!iscartFetching && cartError === null) {
+      if (!isAddProductLoading && addProductError === null) {
         navigate("/cart");
         enqueueSnackbar("Product Added", { variant: "success" });
       } else {
-        enqueueSnackbar(`An Error: ${cartError}`, { variant: "error" });
+        enqueueSnackbar(`An Error: ${addProductError}`, { variant: "error" });
       }
     } else {
       alert("Not Authenticated, please Login.");
@@ -72,7 +74,7 @@ function ProductDetail() {
             <AddToCartForm
               product={product}
               handleSubmit={handleAddToCart}
-              iscartFetching={iscartFetching}
+              isAddProductLoading={isAddProductLoading}
             />
           )}
         </>

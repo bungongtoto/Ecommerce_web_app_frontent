@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PulseLoader } from "react-spinners";
 
-function AddToCartForm({ product, handleSubmit, iscartFetching }) {
+function AddToCartForm({ product, handleSubmit, isAddProductLoading }) {
   const [quantity, setQuantity] = useState(1);
 
   return (
@@ -43,7 +43,7 @@ function AddToCartForm({ product, handleSubmit, iscartFetching }) {
           <td>Evri</td>
         </tr>
       </table>
-      {iscartFetching ? (
+      {isAddProductLoading ? (
         <PulseLoader className="loader" color="#F34325" />
       ) : (
         <button className="wish-list-btn">Product Rating</button>
