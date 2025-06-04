@@ -10,6 +10,8 @@ import Orders from "./Orders/Orders";
 import { SnackbarProvider } from "notistack";
 import Account from "./Account/Account";
 import RequireAuth from "./Auth/RequireAuth";
+import Checkout from "./Checkout/Checkout";
+import Return from "./Checkout/Return";
 
 function App() {
   return (
@@ -29,7 +31,9 @@ function App() {
               <Route path="account" element={<Account />} />
               <Route path="cart" element={<Cart />} />
               <Route path="orders" element={<Orders />} />
+              <Route path="checkout" element={<Checkout />} />
             </Route>
+            <Route path="return" element={<Return />} />
           </Route>
         </Routes>
       </SnackbarProvider>

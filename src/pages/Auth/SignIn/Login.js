@@ -29,10 +29,16 @@ function Login() {
       if (from === undefined || from === "/auth/signup" || from === "/") {
         navigate("/");
       } else {
-        navigate(from);
+        navigate(location.state?.from);
       }
     }
-  }, [isAuthenticated, isFetching, navigate, location.state?.from?.pathname]);
+  }, [
+    isAuthenticated,
+    isFetching,
+    navigate,
+    location.state?.from?.pathname,
+    location.state?.from,
+  ]);
 
   return (
     <main id="login">

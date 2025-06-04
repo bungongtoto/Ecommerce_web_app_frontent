@@ -14,6 +14,7 @@ function Header() {
   const dispatch = useDispatch();
 
   const { isAuthenticated } = useSelector((state) => state.auth);
+  const { cart } = useSelector((state) => state.cart);
 
   const { user } = useSelector((state) => state.user);
 
@@ -53,7 +54,8 @@ function Header() {
                 onClick={() => navigate("/cart")}
                 className="header-nav-tile"
               >
-                <PiShoppingCartThin className="icon" /> <span>(2)</span>
+                <PiShoppingCartThin className="icon" />{" "}
+                <span>({cart?.length ? cart.length : 0})</span>
                 <p>Cart</p>
               </div>
 

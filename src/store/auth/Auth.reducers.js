@@ -7,6 +7,7 @@ import {
 } from "./Auth.actions";
 
 const initialState = {
+  isLoading: false,
   isFetching: false,
   isSuccess: false,
   isAuthenticated: false,
@@ -53,13 +54,18 @@ const authSlice = createSlice({
         state.isSuccess = false;
         state.error = error;
       })
+      .addCase(checkLoggedInStatus.pending, (state, action) => {
+        state.isLoading = true;
+      })
       .addCase(checkLoggedInStatus.fulfilled, (state, action) => {
         const { isAuthenticated } = action.payload;
         state.isAuthenticated = isAuthenticated;
+        state.isLoading = false;
       })
       .addCase(checkLoggedInStatus.rejected, (state, action) => {
         const { isAuthenticated } = action.payload;
         state.isAuthenticated = isAuthenticated;
+        state.isLoading = false;
       })
       .addCase(logoutUser.pending, (state, action) => {
         state.error = null;

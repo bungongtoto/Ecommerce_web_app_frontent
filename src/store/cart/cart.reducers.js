@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   addProductTocart,
+  checkoutCart,
   deleteProductFromCart,
   fetchUserCart,
   updateProductFromCart,
@@ -21,6 +22,7 @@ const initialState = {
   addProductError: null,
   deleteProductError: null,
   updateProductError: null,
+  checkout: { isCheckingOut: false, checkoutError: null, status: null },
 };
 
 const cartSlice = createSlice({
@@ -109,6 +111,23 @@ const cartSlice = createSlice({
         const { error } = action.payload;
         state.isUpdateProductLoading = false;
         state.updateProductError = error;
+      })
+      .addCase(checkoutCart.pending, (state, action) => {
+        state.checkout.isCheckingOut = true;
+        state.checkout.checkoutError = null;
+        state.checkout.status = null;
+      })
+      .addCase(checkoutCart.fulfilled, (state, action) => {
+        const { status } = action.payload;
+        state.checkout.isCheckingOut = false;
+        state.checkout.checkoutError = null;
+        state.checkout.status = status;
+      })
+      .addCase(checkoutCart.rejected, (state, action) => {
+        const { error } = action.payload;
+        state.checkout.isCheckingOut = false;
+        state.checkout.checkoutError = error;
+        state.checkout.status = null;
       });
   },
 });

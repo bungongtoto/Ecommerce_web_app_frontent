@@ -1,16 +1,32 @@
 import "./Cart.css";
 import CartProductTile from "../../components/Cart/CartProductTile";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchUserCart } from "../../store/cart/cart.actions";
 import { PulseLoader } from "react-spinners";
 import GeneralInfo from "../../components/information/GeneralInfo";
+import { useLocation, useNavigate } from "react-router";
+import { enqueueSnackbar } from "notistack";
 
 function Cart() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isInfo, setIsInfo] = useState(false);
 
   const { cart, cartError, iscartFetching, totalPrice, totalQuantity } =
     useSelector((state) => state.cart);
+
+  useEffect(() => {
+    if (cartError && !iscartFetching) {
+      if (cartError === "No items found in your card") {
+        enqueueSnackbar(`Info: ${cartError}`, { variant: "info" });
+        setIsInfo(true);
+      } else {
+        setIsInfo(false);
+      }
+    }
+  }, [cartError, iscartFetching]);
 
   useEffect(() => {
     dispatch(fetchUserCart());
@@ -36,17 +52,28 @@ function Cart() {
                   <h3>{totalQuantity}</h3>
                 </div>
                 <h1>Total: £ {totalPrice} </h1>
-                <button className="wish-list-btn">Checkout</button>
+                {cart && (
+                  <button
+                    onClick={() =>
+                      navigate("/checkout", { state: { from: location } })
+                    }
+                    className="wish-list-btn"
+                  >
+                    Checkout
+                  </button>
+                )}
               </div>
             </div>
           )}
 
           {cartError && (
             <GeneralInfo
-              isError={true}
+              isError={!isInfo}
               messages={cartError}
-              btnText="Retry"
-              handleAction={() => dispatch(fetchUserCart())}
+              btnText={isInfo ? "Go Home" : "Retry"}
+              handleAction={() =>
+                isInfo ? navigate("/") : dispatch(fetchUserCart())
+              }
             />
           )}
         </>
