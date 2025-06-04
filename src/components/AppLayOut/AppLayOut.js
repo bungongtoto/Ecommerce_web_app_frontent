@@ -6,6 +6,7 @@ import { checkLoggedInStatus } from "../../store/auth/Auth.actions";
 import { fetchUserDetails } from "../../store/user/User.actions";
 import { fetchProductCategories } from "../../store/categories/categories.actions";
 import { enqueueSnackbar } from "notistack";
+import { fetchUserCart } from "../../store/cart/cart.actions";
 
 function AppLayOut() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function AppLayOut() {
     dispatch(checkLoggedInStatus());
     if (isAuthenticated) {
       dispatch(fetchUserDetails());
+      dispatch(fetchUserCart());
     }
   }, [dispatch, isAuthenticated]);
   return (

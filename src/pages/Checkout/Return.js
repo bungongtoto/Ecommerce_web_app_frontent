@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation, useNavigate } from "react-router";
-import { checkoutCart } from "../../store/cart/cart.actions";
+import { checkoutCart, fetchUserCart } from "../../store/cart/cart.actions";
 import { enqueueSnackbar } from "notistack";
 import { PulseLoader } from "react-spinners";
 
 function Return() {
   const location = useLocation();
+  const urlParams = new URLSearchParams(location.search);
+  const session_id = urlParams.get("session_id");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -15,26 +17,28 @@ function Return() {
   );
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const session_id = urlParams.get("session_id");
     dispatch(checkoutCart({ session_id }));
-  }, [location.search, dispatch]);
+  }, [session_id, dispatch]);
 
   useEffect(() => {
     if (checkoutError && !isCheckingOut) {
-      enqueueSnackbar(`Info: ${checkoutError}`, { variant: "info" });
       if (checkoutError === "No items found in your card") {
         navigate("/");
+        enqueueSnackbar(`Info: ${checkoutError}`, { variant: "info" });
       }
     }
   }, [checkoutError, isCheckingOut, navigate]);
 
   useEffect(() => {
     if (status === "Open" && !isCheckingOut) {
-      enqueueSnackbar("Order did not go Through.", { variant: "info" });
+      enqueueSnackbar("Order did not go Through.", { variant: "error" });
       navigate("/cart/checkout", { state: { from: location } });
     }
-  }, [status, isCheckingOut, location, navigate]);
+
+    if (status === "Complete") {
+      dispatch(fetchUserCart());
+    }
+  }, [status, isCheckingOut, location, navigate, dispatch]);
 
   return (
     <main id="return">

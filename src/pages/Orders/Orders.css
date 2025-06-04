@@ -4,6 +4,15 @@
     text-align: center;
     
 }
+
+#order-details {text-align: center;}
+
+#order-details table {
+    width: 90%;
+    margin:  20px auto;
+    text-align: center;
+}
+
 #table-heading {
     background-color: var(--primary-color);
     color: white;
@@ -41,4 +50,33 @@ tbody tr:hover{
 
 tbody tr:active{
     background-color: var(--third-color);
+}
+
+
+#order-items-list {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.order-item-tile {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 85% ;
+    height: 400px;
+    border:  1px solid var(--primary-color);
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-item-tile div {
+    width: 55%;
+    height: 100%;
+    text-align: start;
+}
+
+.order-item-tile img {
+    width: 30%;
+    height: 70%;
 }

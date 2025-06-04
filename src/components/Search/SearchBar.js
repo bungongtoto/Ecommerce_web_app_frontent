@@ -6,6 +6,7 @@ function SearchBar() {
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        alert("This Service is still in development.");
       }}
       id="search-bar"
     >

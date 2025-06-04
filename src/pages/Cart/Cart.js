@@ -18,6 +18,10 @@ function Cart() {
     useSelector((state) => state.cart);
 
   useEffect(() => {
+    dispatch(fetchUserCart());
+  }, [dispatch]);
+
+  useEffect(() => {
     if (cartError && !iscartFetching) {
       if (cartError === "No items found in your card") {
         enqueueSnackbar(`Info: ${cartError}`, { variant: "info" });
@@ -27,10 +31,6 @@ function Cart() {
       }
     }
   }, [cartError, iscartFetching]);
-
-  useEffect(() => {
-    dispatch(fetchUserCart());
-  }, [dispatch]);
 
   const cartProductList = cart?.map((cartItem, index) => (
     <CartProductTile key={index} product={cartItem} />

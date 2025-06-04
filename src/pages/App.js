@@ -12,6 +12,7 @@ import Account from "./Account/Account";
 import RequireAuth from "./Auth/RequireAuth";
 import Checkout from "./Checkout/Checkout";
 import Return from "./Checkout/Return";
+import OrderDetails from "./Orders/OrderDetails";
 
 function App() {
   return (
@@ -30,7 +31,10 @@ function App() {
             <Route element={<RequireAuth />}>
               <Route path="account" element={<Account />} />
               <Route path="cart" element={<Cart />} />
-              <Route path="orders" element={<Orders />} />
+              <Route path="orders">
+                <Route index element={<Orders />} />
+                <Route path=":order_id" element={<OrderDetails />} />
+              </Route>
               <Route path="checkout" element={<Checkout />} />
             </Route>
             <Route path="return" element={<Return />} />

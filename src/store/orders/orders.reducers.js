@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchOrders } from "./orders.actions";
+import { fetchOrderItems, fetchOrders } from "./orders.actions";
 
 const initialState = {
   orders: null,
   isOrdersFetching: false,
   ordersError: null,
+  viewOrder: {
+    order: null,
+    isOrderFetching: false,
+    orderError: null,
+  },
 };
 
 const ordersSlice = createSlice({
@@ -27,6 +32,21 @@ const ordersSlice = createSlice({
         const { error } = action.payload;
         state.ordersError = error;
         state.isOrdersFetching = false;
+      })
+      .addCase(fetchOrderItems.pending, (state, action) => {
+        state.viewOrder.isOrderFetching = true;
+        state.viewOrder.orderError = null;
+      })
+      .addCase(fetchOrderItems.fulfilled, (state, action) => {
+        const { order } = action.payload;
+        state.viewOrder.order = order;
+        state.viewOrder.isOrderFetching = false;
+        state.viewOrder.orderError = null;
+      })
+      .addCase(fetchOrderItems.rejected, (state, action) => {
+        const { error } = action.payload;
+        state.viewOrder.isOrderFetching = false;
+        state.viewOrder.orderError = error;
       });
   },
 });
