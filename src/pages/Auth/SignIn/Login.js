@@ -82,7 +82,12 @@ function Login() {
 
         <p>OR sign up with:</p>
 
-        <FcGoogle className="icon" />
+        <FcGoogle
+          onClick={() =>
+            (window.location.href = "http://localhost:3500/auth/google")
+          }
+          className="icon"
+        />
       </form>
     </main>
   );

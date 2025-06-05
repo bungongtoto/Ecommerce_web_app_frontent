@@ -16,8 +16,8 @@ function GeneralInfo({
     <div className={isError ? "info-box auth-error " : "info-box "}>
       <h1>{isError ? "An Error Occured" : "Information"}</h1>
       <ul>
-        {messages.map((message) => (
-          <li>{message}</li>
+        {messages.map((message, index) => (
+          <li key={index}>{message}</li>
         ))}
       </ul>
 
