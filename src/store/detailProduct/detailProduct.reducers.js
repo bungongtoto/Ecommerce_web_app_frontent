@@ -16,6 +16,7 @@ const detailProductSlice = createSlice({
       .addCase(fetchProductById.pending, (state, action) => {
         state.isProductLoading = true;
         state.errorProduct = null;
+        state.product = null;
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
         const { product } = action.payload;

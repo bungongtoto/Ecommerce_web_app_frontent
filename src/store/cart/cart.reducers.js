@@ -58,6 +58,7 @@ const cartSlice = createSlice({
       .addCase(fetchUserCart.pending, (state, action) => {
         state.iscartFetching = true;
         state.cartError = null;
+        state.cart = null;
       })
       .addCase(fetchUserCart.fulfilled, (state, action) => {
         const { cart, totalQuantity, totalPrice } = action.payload;

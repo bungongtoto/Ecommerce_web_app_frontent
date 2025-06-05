@@ -20,7 +20,7 @@ function CategoriesHeader() {
   return (
     <>
       <div id="categories-header">
-        <h3>Popular Categories</h3>
+        <h3 onClick={() => navigate("/")}>Popular Products</h3>
         {isCategoriesFetching ? (
           <PulseLoader className="loader" color="#F34325" />
         ) : (

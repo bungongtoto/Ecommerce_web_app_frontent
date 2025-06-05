@@ -21,6 +21,7 @@ const ordersSlice = createSlice({
       .addCase(fetchOrders.pending, (state, action) => {
         state.isOrdersFetching = true;
         state.ordersError = null;
+        state.orders = null;
       })
       .addCase(fetchOrders.fulfilled, (state, action) => {
         const { orders } = action.payload;
@@ -36,6 +37,7 @@ const ordersSlice = createSlice({
       .addCase(fetchOrderItems.pending, (state, action) => {
         state.viewOrder.isOrderFetching = true;
         state.viewOrder.orderError = null;
+        state.viewOrder.order = null;
       })
       .addCase(fetchOrderItems.fulfilled, (state, action) => {
         const { order } = action.payload;

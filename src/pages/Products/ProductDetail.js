@@ -56,7 +56,10 @@ function ProductDetail() {
           {product && (
             <div className="left">
               <h2>{product?.name}</h2>
-              <div>
+              <div
+                className="cursor"
+                onClick={() => navigate(`/product/${product.id}/reviews`)}
+              >
                 <ProductRatingTile
                   average_rating={product?.average_rating}
                   rating_count={product?.rating_count}

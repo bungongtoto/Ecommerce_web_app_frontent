@@ -25,13 +25,6 @@ function AddToCartForm({ product, handleSubmit, isAddProductLoading }) {
           max={product?.quantity}
         ></input>
       </div>
-      <button
-        className="cart-btn"
-        type="submit"
-        disabled={product?.quantity <= 0}
-      >
-        Add to Basket
-      </button>
 
       <table>
         <tr>
@@ -46,7 +39,13 @@ function AddToCartForm({ product, handleSubmit, isAddProductLoading }) {
       {isAddProductLoading ? (
         <PulseLoader className="loader" color="#F34325" />
       ) : (
-        <button className="wish-list-btn">Product Rating</button>
+        <button
+          className="cart-btn"
+          type="submit"
+          disabled={product?.quantity <= 0}
+        >
+          Add to Basket
+        </button>
       )}
     </form>
   );

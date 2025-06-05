@@ -67,6 +67,10 @@ code {
   background: transparent; /* scrollbar background */
 }
 
+.cursor {
+  cursor: pointer;
+}
+
 .cart-btn,
 .wish-list-btn {
   font-size: 1.4rem;

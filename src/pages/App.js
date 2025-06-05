@@ -13,6 +13,8 @@ import RequireAuth from "./Auth/RequireAuth";
 import Checkout from "./Checkout/Checkout";
 import Return from "./Checkout/Return";
 import OrderDetails from "./Orders/OrderDetails";
+import ProductReview from "./Reviews/ProductReview";
+import NotFound from "./NotFound/NotFound";
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route path="/" element={<AppLayOut />}>
             <Route index element={<Products />} />
             <Route path="product/:id" element={<ProductDetail />} />
+            <Route path="product/:id/reviews" element={<ProductReview />} />
 
             <Route path="/auth">
               <Route index element={<Login />} />
@@ -37,7 +40,9 @@ function App() {
               </Route>
               <Route path="checkout" element={<Checkout />} />
             </Route>
+
             <Route path="return" element={<Return />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </SnackbarProvider>

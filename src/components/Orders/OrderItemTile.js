@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router";
 import ProductRatingTile from "../Rating/ProductRatingTile";
 
 function OrderItemTile({ orderItem }) {
+  const navigate = useNavigate();
   return (
     <div className="order-item-tile">
       <img src={orderItem.images[0].image_url} alt={orderItem.name} />
@@ -12,7 +14,7 @@ function OrderItemTile({ orderItem }) {
         <p>Quantity(units): {orderItem.quantity}</p>
         <br></br>
         <button
-          onClick={() => alert("Rating Clicked.")}
+          onClick={() => navigate(`/product/${orderItem.product_id}/reviews`)}
           className="wish-list-btn"
         >
           Product Rating

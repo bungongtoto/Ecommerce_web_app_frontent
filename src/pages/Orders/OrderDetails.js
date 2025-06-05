@@ -22,7 +22,6 @@ function OrderDetails() {
   const orderItems = order?.order_items.map((item, index) => (
     <OrderItemTile key={index} orderItem={item} />
   ));
-  console.log(order);
   return (
     <main id="order-details">
       {isOrderFetching ? (
