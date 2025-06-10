@@ -38,5 +38,36 @@
 #login form .icon {
   cursor: pointer;
   margin: 0 auto;
-  font-size: 2rem;
+  font-size: 3rem;
+}
+
+
+@media only screen and (max-width: 1300px) {
+  #login form {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #login form {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  #login form {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  #login form {
+    width: 80%;
+    font-size: 1rem;
+    padding: 20px;
+  }
+
+  #login form input {
+    width: 90%;
+  }
 }
