@@ -30,3 +30,28 @@
   border: 1px solid var(--secondary-color);
   cursor: pointer;
 }
+
+
+@media only screen and (max-width: 1228px) {
+  #search-bar {
+    width: 60vw;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  #search-bar {
+    width: 65vw;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  #search-bar {
+    width: 75vw;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  #search-bar {
+    width: 95vw;
+  }
+}

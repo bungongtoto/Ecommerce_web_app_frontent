@@ -16,7 +16,13 @@ function AllCategories({ open, setOpen }) {
   );
 
   const categoriesList = categories?.map((category, index) => (
-    <li key={index} onClick={() => navigate(`/?category_id=${category.id}`)}>
+    <li
+      key={index}
+      onClick={() => {
+        navigate(`/?category_id=${category.id}`);
+        setOpen(false);
+      }}
+    >
       {category.name}
     </li>
   ));
@@ -38,11 +44,11 @@ function AllCategories({ open, setOpen }) {
       className={open ? "more-menu-open" : "more-menu-close"}
     >
       <div className="more-menu-header">
-        <h1>Categories</h1>
         <IoIosCloseCircleOutline
           onClick={() => setOpen(false)}
           className="icon"
         />
+        <h1>Categories</h1>
       </div>
       {isCategoriesFetching ? (
         <PulseLoader className="loader" color="#F34325" />
@@ -54,7 +60,9 @@ function AllCategories({ open, setOpen }) {
           isError={true}
           messages={categoriesError}
           btnText="Try Again"
-          handleAction={() => dispatch(fetchProductCategories())}
+          handleAction={() => {
+            dispatch(fetchProductCategories());
+          }}
         />
       )}
     </div>
